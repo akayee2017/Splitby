@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="split-byFlow" doc:id="069b0eef-f4fa-440e-8c1a-7fc1be2c28f7" >
+		<ee:transform doc:name="Transform Message" doc:id="d23576d8-0f07-4bb6-b7a0-03e080b1edc1" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+var name = "Firew Max Lee"
+---
+{
+	"First Name":( name splitBy(" "))[0],
+	"Last Name": (name splitBy (" "))[1]
+	
+}
+]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="split-byFlow1" doc:id="6381896d-8436-4d86-aa53-782bdd1aa4ec" >
+		<ee:transform doc:name="Transform Message" doc:id="0dbf8b33-b73c-4780-8b92-cf8f8a6ff485" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+var name = "Firew Max Lee"
+---
+{
+	"First Name":( name splitBy(" "))[0],
+	"Last Name": (name splitBy (" "))[1]
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
